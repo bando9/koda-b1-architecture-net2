@@ -1,6 +1,6 @@
-using KodaStore.Api.Models;
+﻿using KodaStore.Domain.Entities;
  
-namespace KodaStore.Api.DTOs;
+namespace KodaStore.Application.DTOs;
  
 public sealed record ProductResponse(string ProductCode, string Name, decimal Price, int Stock, CategoryResponse Category, string? Description)
 {

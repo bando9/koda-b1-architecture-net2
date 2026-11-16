@@ -1,8 +1,8 @@
-using System.Drawing;
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Repositories;
+﻿using System.Drawing;
+using KodaStore.Application.DTOs;
+using KodaStore.Application.Repositories;
 
-namespace KodaStore.Api.Services;
+namespace KodaStore.Application.Services;
 
 public sealed class OrderService : IOrderService
 {

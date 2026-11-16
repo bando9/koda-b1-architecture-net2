@@ -1,11 +1,12 @@
-using KodaStore.Api.Data;
+﻿using KodaStore.Infrastructure.Persistence;
 using Scalar.AspNetCore;
 using KodaStore.Api.Files;
 using KodaStore.Api.Middlewares;
-using KodaStore.Api.Repositories;
-using KodaStore.Api.Services;
+using KodaStore.Application.Repositories;
+using KodaStore.Application.Services;
 using Microsoft.EntityFrameworkCore;
-using KodaStore.Api.Seeding;
+using KodaStore.Infrastructure.Seeding;
+using KodaStore.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

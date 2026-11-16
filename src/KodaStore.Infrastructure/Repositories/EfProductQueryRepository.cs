@@ -1,9 +1,11 @@
-using KodaStore.Api.Data;
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Models;
+﻿using KodaStore.Infrastructure.Persistence;
+using KodaStore.Application.DTOs;
+using KodaStore.Domain.Entities;
+// using Microsoft.EntityFrameworkCore;
+using KodaStore.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
+namespace KodaStore.Infrastructure.Repositories;
 
-namespace KodaStore.Api.Repositories;
 
 public sealed class EfProductQueryRepository(AppDbContext db) : IProductQueryRepository
 {

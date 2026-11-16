@@ -1,12 +1,15 @@
-
-using KodaStore.Api.Data;
-using KodaStore.Api.Models;
+﻿
+using KodaStore.Infrastructure.Persistence;
+using KodaStore.Domain.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using KodaStore.Application.Repositories;
 
-namespace KodaStore.Api.Repositories;
 
-public sealed class EfProductRepository : IProductRepository 
+namespace KodaStore.Infrastructure.Repositories;
+
+
+public sealed class EfProductRepository : IProductRepository
 {
 
     private readonly AppDbContext _db;

@@ -1,10 +1,11 @@
-using KodaStore.Api.Data;
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Models;
+﻿using KodaStore.Infrastructure.Persistence;
+using KodaStore.Application.DTOs;
+using KodaStore.Domain.Entities;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using KodaStore.Application.Repositories;
 
-namespace KodaStore.Api.Repositories;
+namespace KodaStore.Infrastructure.Repositories;
 
 public sealed class EfOrderRepository(AppDbContext db) : IOrderRepository
 {

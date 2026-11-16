@@ -1,4 +1,6 @@
-namespace KodaStore.Api.Models;
+using KodaStore.Domain.Entities;
+
+namespace KodaStore.Domain.Entities;
 
 
 public sealed class OrderItem

@@ -1,7 +1,7 @@
-using KodaStore.Api.Models;
+﻿using KodaStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace KodaStore.Api.Seeding;
+namespace KodaStore.Infrastructure.Seeding;
 
 public static class OrderSeedData
 {

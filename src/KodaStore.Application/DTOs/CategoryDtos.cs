@@ -1,6 +1,6 @@
-using KodaStore.Api.Models;
+﻿using KodaStore.Domain.Entities;
 
-namespace KodaStore.Api.DTOs;
+namespace KodaStore.Application.DTOs;
 
 public sealed record CategoryResponse(
     long Id,

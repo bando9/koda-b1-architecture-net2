@@ -1,8 +1,8 @@
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Models;
-using KodaStore.Api.Repositories;
+﻿using KodaStore.Application.DTOs;
+using KodaStore.Domain.Entities;
+using KodaStore.Application.Repositories;
 
-namespace KodaStore.Api.Services;
+namespace KodaStore.Application.Services;
 
 public sealed class ProductService : IProductService
 {

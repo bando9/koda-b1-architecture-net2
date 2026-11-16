@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace KodaStore.Api.Migrations
+namespace KodaStore.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

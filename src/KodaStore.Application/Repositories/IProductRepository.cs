@@ -1,6 +1,6 @@
-using KodaStore.Api.Models;
+﻿using KodaStore.Domain.Entities;
 
-namespace KodaStore.Api.Repositories;
+namespace KodaStore.Application.Repositories;
 
 public interface IProductRepository
 {

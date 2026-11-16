@@ -1,7 +1,7 @@
-using KodaStore.Api.Models;
+﻿using KodaStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace KodaStore.Api.Data;
+namespace KodaStore.Infrastructure.Persistence;
 
 public sealed class AppDbContext : DbContext
 {

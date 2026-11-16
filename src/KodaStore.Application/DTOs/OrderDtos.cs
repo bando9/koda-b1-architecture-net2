@@ -1,7 +1,7 @@
-
+﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace KodaStore.Api.DTOs;
+namespace KodaStore.Application.DTOs;
 
 public sealed record CreateOrderRequest(
     [Required,StringLength(35,MinimumLength = 3)] string OrderNumber,

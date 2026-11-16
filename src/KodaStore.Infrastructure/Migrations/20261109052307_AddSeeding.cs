@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace KodaStore.Api.Migrations
+namespace KodaStore.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class AddSeeding : Migration

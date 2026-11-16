@@ -1,4 +1,4 @@
-namespace KodaStore.Api.DTOs;
+﻿namespace KodaStore.Application.DTOs;
 
 public record UpdateProductRequest(
     string Name,

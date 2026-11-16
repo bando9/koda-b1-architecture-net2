@@ -1,6 +1,6 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace KodaStore.Api.DTOs;
+namespace KodaStore.Application.DTOs;
 
 public sealed class ProductSearchRequest : IValidatableObject
 {

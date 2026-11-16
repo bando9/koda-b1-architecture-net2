@@ -1,4 +1,6 @@
-namespace KodaStore.Api.Repositories;
+
+
+namespace KodaStore.Application.Repositories;
 
 public enum ProductSort
 {

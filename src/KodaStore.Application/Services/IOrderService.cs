@@ -1,6 +1,6 @@
-using KodaStore.Api.DTOs;
+﻿using KodaStore.Application.DTOs;
 
-namespace KodaStore.Api.Services;
+namespace KodaStore.Application.Services;
 
 public interface IOrderService
 {

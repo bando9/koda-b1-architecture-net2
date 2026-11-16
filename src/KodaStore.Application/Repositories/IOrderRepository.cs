@@ -1,6 +1,6 @@
-using KodaStore.Api.DTOs;
+﻿using KodaStore.Application.DTOs;
 
-namespace KodaStore.Api.Repositories;
+namespace KodaStore.Application.Repositories;
 
 public interface IOrderRepository
 {

@@ -1,7 +1,7 @@
-using KodaStore.Api.Data;
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Models;
-using KodaStore.Api.Services;
+﻿using KodaStore.Infrastructure.Persistence;
+using KodaStore.Application.DTOs;
+using KodaStore.Domain.Entities;
+using KodaStore.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileSystemGlobbing;
 

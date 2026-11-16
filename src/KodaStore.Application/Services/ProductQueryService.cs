@@ -1,7 +1,7 @@
-using KodaStore.Api.DTOs;
-using KodaStore.Api.Repositories;
+﻿using KodaStore.Application.DTOs;
+using KodaStore.Application.Repositories;
 
-namespace KodaStore.Api.Services;
+namespace KodaStore.Application.Services;
 
 public sealed class ProductQueryService(IProductQueryRepository repo) : IProductQueryService
 {

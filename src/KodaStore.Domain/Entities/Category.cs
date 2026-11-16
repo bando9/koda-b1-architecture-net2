@@ -1,5 +1,5 @@
 
-namespace KodaStore.Api.Models;
+namespace KodaStore.Domain.Entities;
 
 public sealed class Category
 {

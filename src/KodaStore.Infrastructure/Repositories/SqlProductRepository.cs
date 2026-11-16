@@ -1,8 +1,8 @@
-// using System.Data;
-// using KodaStore.Api.Models;
+﻿// using System.Data;
+// using KodaStore.Domain.Entities;
 // using Microsoft.Data.SqlClient;
 
-// namespace KodaStore.Api.Repositories;
+// namespace KodaStore.Application.Repositories;
 
 // public sealed class SqlProductRepository : IProductRepository
 // {
