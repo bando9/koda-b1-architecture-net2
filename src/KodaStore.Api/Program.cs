@@ -7,6 +7,7 @@ using KodaStore.Application.Services;
 using Microsoft.EntityFrameworkCore;
 using KodaStore.Infrastructure.Seeding;
 using KodaStore.Infrastructure.Repositories;
+using KodaStore.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,17 +34,18 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 // Repository
 // builder.Services.AddScoped<IProductRepository, SqlProductRepository>();
-builder.Services.AddScoped<IProductRepository, EfProductRepository>();
+// builder.Services.AddScoped<IProductRepository, EfProductRepository>();
 
-builder.Services.AddScoped<IOrderRepository, EfOrderRepository>();
-builder.Services.AddScoped<IProductQueryRepository, EfProductQueryRepository>();
+// builder.Services.AddScoped<IOrderRepository, EfOrderRepository>();
+// builder.Services.AddScoped<IProductQueryRepository, EfProductQueryRepository>();
 
-// Service
+// // Service
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductImageStorage, LocalProductImageStorage>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-
 builder.Services.AddScoped<IProductQueryService, ProductQueryService>();
+
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var connectionString = builder.Configuration.GetConnectionString("ecommercedb") 
     ?? throw new InvalidOperationException("ga bisa koneksi, belum konfigurasi");
@@ -106,6 +108,7 @@ if (app.Environment.IsDevelopment())
 app.UseMiddleware<RequestTimingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseCors("ReactClient");
 
 app.MapControllers();
 app.MapControllerRoute(
