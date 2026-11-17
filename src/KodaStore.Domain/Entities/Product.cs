@@ -12,13 +12,16 @@ public sealed class Product
     public int Stock { get; private set;}
     public string? Description { get; private set;}
     public ICollection<OrderItem> OrderItems {get; private set;} = new List<OrderItem>();
+    public string Category {get; private set;}
     
     // FK Category
-    public long CategoryId { get; set;}
-    public Category Category {get; private set;}
+    public long? CategoryId { get; set;}
+    public Category? CategoryEntity {get; private set;}
+    public byte[] RowVersion {get; private set;} = [];
 
 
-    public Product(string productCode, string name, decimal price, int stock,long categoryId,string? description = null)
+
+    public Product(string productCode, string name, decimal price, int stock,long? categoryId,string? description = null)
     {
         if (string.IsNullOrWhiteSpace(productCode) || productCode.Trim().Length > 30)
         {
@@ -36,6 +39,10 @@ public sealed class Product
         {
             throw new ArgumentOutOfRangeException(nameof(stock), "stock cannot be negative");
         }
+        if (categoryId.HasValue && categoryId.Value <= 0)
+        {
+            throw new ArgumentException("CategoryId tidak valid", nameof(categoryId));
+        }
        
         ProductCode = productCode.Trim().ToUpperInvariant();
         Name = name;
@@ -45,7 +52,7 @@ public sealed class Product
         Description = description?.Trim();
     }
 
-    public void UpdateDetail(string name,decimal price, int stock, long categoryId,string? description)
+    public void UpdateDetail(string name,decimal price, int stock, long? categoryId,string? description)
     {
         var validated = new Product(ProductCode, name, price, stock, categoryId, description);
 
@@ -54,6 +61,19 @@ public sealed class Product
         Stock = validated.Stock;
         CategoryId=validated.CategoryId;
         Description=validated.Description;
+    }
+
+    public void AssignCategory(Category category)
+    {
+        ArgumentNullException.ThrowIfNull(category);
+        if(category.Id <= 0)
+        {
+            throw new InvalidOperationException("simpan category dulu biar dapet Idnya");
+        }
+
+        CategoryId = category.Id;
+        CategoryEntity = category;
+        Category = category.Name;
     }
 
     

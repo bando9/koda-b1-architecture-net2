@@ -60,7 +60,7 @@ public sealed class EfProductQueryRepository(AppDbContext db) : IProductQueryRep
         var inspectQuery = sorted.TagWith("KodaStore.ProductSearch.Page")
             .Skip(skip)
             .Take(criteria.PageSize)
-            .Select(p=> new ProductSearchItemResponse(p.ProductCode,p.Name,CategoryResponse.FromModel(p.Category),p.Price,p.Stock));
+            .Select(p=> new ProductSearchItemResponse(p.ProductCode,p.Name,CategoryResponse.FromModel(p.CategoryEntity),p.Price,p.Stock));
             
         string sqlPreview = inspectQuery.ToQueryString();
 

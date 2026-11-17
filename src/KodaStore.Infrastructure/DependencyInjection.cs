@@ -34,6 +34,7 @@ public static class DepedencyInjection
         services.AddScoped<IProductRepository, EfProductRepository>();
         services.AddScoped<IOrderRepository, EfOrderRepository>();
         services.AddScoped<IProductQueryRepository, EfProductQueryRepository>();
+        services.AddScoped<ICategoryRepository, EfCategoryRepository>();
         // services.AddScoped<ICategoryRepository, EfCategoryRepository>();
 
         return services;

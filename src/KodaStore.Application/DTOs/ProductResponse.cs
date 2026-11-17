@@ -4,5 +4,5 @@ namespace KodaStore.Application.DTOs;
  
 public sealed record ProductResponse(string ProductCode, string Name, decimal Price, int Stock, CategoryResponse Category, string? Description)
 {
-    public static ProductResponse FromModel(Product product) => new(product.ProductCode, product.Name, product.Price, product.Stock, CategoryResponse.FromModel(product.Category), product.Description);
+    public static ProductResponse FromModel(Product product) => new(product.ProductCode, product.Name, product.Price, product.Stock, CategoryResponse.FromModel(product.CategoryEntity), product.Description);
 }

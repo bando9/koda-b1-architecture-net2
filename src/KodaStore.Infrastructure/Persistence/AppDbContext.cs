@@ -13,10 +13,24 @@ public sealed class AppDbContext : DbContext
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Order> Orders => Set<Order>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+    public DbSet<Category> Categories => Set<Category>();
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+         // *Category
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.ToTable("Category", "dbo");
+
+            entity.HasKey(c=>c.Id);
+            entity.Property(c=>c.Id).ValueGeneratedOnAdd();
+
+            entity.Property(c=>c.Name).HasMaxLength(30).IsRequired();
+            entity.HasIndex(c=> c.Name).IsUnique();
+        });
 
         // *Product
         modelBuilder.Entity<Product>(entity=>
@@ -49,7 +63,11 @@ public sealed class AppDbContext : DbContext
             entity.Property(p =>p.Description)
                 .HasMaxLength(100);
 
-            entity.HasOne(p => p.Category)
+            entity.Property(p=>p.CategoryEntity).HasMaxLength(30).IsRequired();
+            entity.Property(p => p.CategoryId).IsRequired(false);
+            entity.Property(p=>p.RowVersion).IsRowVersion();
+
+            entity.HasOne(p => p.CategoryEntity)
                 .WithMany(c => c.Products)
                 .HasForeignKey(p => p.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict)

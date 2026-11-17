@@ -19,12 +19,12 @@ public sealed class EfProductRepository : IProductRepository
     }
     public async Task<IReadOnlyList<Product>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _db.Products.AsNoTracking().Include(p=>p.Category).OrderBy(p => p.ProductCode).ToListAsync(cancellationToken);
+        return await _db.Products.AsNoTracking().Include(p=>p.CategoryEntity).OrderBy(p => p.ProductCode).ToListAsync(cancellationToken);
     }
 
     public async Task<Product?> GetByCodeAsync(string productCode, CancellationToken cancellationToken)
     {
-        return await _db.Products.AsNoTracking().Include(p=>p.Category).FirstOrDefaultAsync(p => p.ProductCode == productCode, cancellationToken);
+        return await _db.Products.AsNoTracking().Include(p=>p.CategoryEntity).FirstOrDefaultAsync(p => p.ProductCode == productCode, cancellationToken);
     }
 
     public async Task<bool> TryAddAsync(Product product, CancellationToken cancellationToken)
