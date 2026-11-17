@@ -1,10 +1,13 @@
 using KodaStore.Application.Repositories;
+using KodaStore.Application.Services;
 using KodaStore.Infrastructure.Persistence;
 using KodaStore.Infrastructure.Repositories;
+using KodaStore.Infrastructure.Identity;
 using KodaStore.Infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
 
 namespace KodaStore.Infrastructure;
 
@@ -35,7 +38,23 @@ public static class DepedencyInjection
         services.AddScoped<IOrderRepository, EfOrderRepository>();
         services.AddScoped<IProductQueryRepository, EfProductQueryRepository>();
         services.AddScoped<ICategoryRepository, EfCategoryRepository>();
-        // services.AddScoped<ICategoryRepository, EfCategoryRepository>();
+
+        // User
+        services.AddIdentityCore<AppUser>(options =>
+        {
+            options.User.RequireUniqueEmail = true;
+            options.Password.RequiredLength = 8;
+            options.Password.RequireDigit = true;
+            options.Password.RequireLowercase = true;
+            options.Password.RequireUppercase = true;
+            options.Password.RequireNonAlphanumeric = true;
+            options.Password.RequiredUniqueChars = 4;
+
+            options.SignIn.RequireConfirmedEmail = false;
+        }).AddRoles<IdentityRole<Guid>>()
+        .AddEntityFrameworkStores<AppDbContext>();
+
+        services.AddScoped<IAuthService, IdentityAuthService>();
 
         return services;
     }
