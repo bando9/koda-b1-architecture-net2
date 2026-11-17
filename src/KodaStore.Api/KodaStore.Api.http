@@ -100,7 +100,7 @@ Content-Type: application/json
 
 {
     "email": "test@gmail.com",
-    "password": "128A193dwka@",
+    "password": "128A193dwka@", 
     "displayName": "Bando Mega"
 }
 

@@ -53,3 +53,58 @@ export async function loginUser({ email, password }) {
 
   return data;
 }
+
+export async function registerUser({ email, password, displayName }) {
+  if (!API_BASE_URL) throw new Error("base url belum dikonfigurasi");
+
+  let response;
+  try {
+    response = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        email: email.trim(),
+        password,
+        displayName: displayName.trim(),
+      }),
+    });
+  } catch {
+    throw new Error(
+      "Tidak dapat menghubungi API, periksa backend URL dan konfigurasi CORS.",
+    );
+  }
+
+  const contentType = response.headers.get("content-type") ?? "";
+  const isJson = contentType.includes("json");
+  const data = isJson ? await response.json().catch(() => null) : null;
+
+  if (!response.ok) {
+    if (response.status == 409) {
+      throw new Error("email sudah terdaftar");
+    }
+
+    if (response.status == 400) {
+      const errors = Object.values(data?.errors ?? {}).flat();
+      throw new Error(errors[0] ?? "Data register tidak valid");
+    }
+
+    if (response.status == 429) {
+      throw new Error("Terlalu banyak percobaan register");
+    }
+
+    throw new Error(
+      response.status >= 500
+        ? "Server sedang mengalami gangguan"
+        : "Register gagal. silahkan coba lagi",
+    );
+  }
+
+  if (!data?.user?.id || !data?.user?.email) {
+    throw new Error("format response login API tidak sesuai");
+  }
+
+  return data;
+}
