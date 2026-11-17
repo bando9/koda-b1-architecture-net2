@@ -1,9 +1,11 @@
 ﻿using KodaStore.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace KodaStore.Infrastructure.Persistence;
 
-public sealed class AppDbContext : DbContext
+public sealed class AppDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -20,7 +22,19 @@ public sealed class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-         // *Category
+        // *User
+        modelBuilder.Entity<AppUser>(entity =>
+        {
+            entity.Property(user => user.DisplayName)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            entity.Property(user => user.CreatedAtUtc)
+                .IsRequired();
+        });
+
+
+        // *Category
         modelBuilder.Entity<Category>(entity =>
         {
             entity.ToTable("Category", "dbo");
@@ -63,7 +77,8 @@ public sealed class AppDbContext : DbContext
             entity.Property(p =>p.Description)
                 .HasMaxLength(100);
 
-            entity.Property(p=>p.CategoryEntity).HasMaxLength(30).IsRequired();
+            entity.Property(p=>p.Category).HasMaxLength(30).IsRequired(false);
+
             entity.Property(p => p.CategoryId).IsRequired(false);
             entity.Property(p=>p.RowVersion).IsRowVersion();
 
@@ -145,14 +160,14 @@ public sealed class AppDbContext : DbContext
         });
     
 
-        modelBuilder.Entity<Category>(entity =>
-        {
-            entity.HasKey(c => c.Id);
+        // modelBuilder.Entity<Category>(entity =>
+        // {
+        //     entity.HasKey(c => c.Id);
 
-            entity.Property(c => c.Name).HasMaxLength(50).IsRequired();
+        //     entity.Property(c => c.Name).HasMaxLength(50).IsRequired();
 
-            entity.HasIndex(c=>c.Name).IsUnique();
-        });
+        //     entity.HasIndex(c=>c.Name).IsUnique();
+        // });
     }
 
 

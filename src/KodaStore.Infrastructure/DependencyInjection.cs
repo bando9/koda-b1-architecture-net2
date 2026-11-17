@@ -19,14 +19,14 @@ public static class DepedencyInjection
             option.UseSqlServer(connectionString)
              .UseSeeding((context, _) =>
              {
+                 CategorySeedData.Seed(context);
                  ProductSeedData.Seed(context);
-                //  CategorySeedData.Seed(context);
                  OrderSeedData.Seed(context);
              })
              .UseAsyncSeeding(async (context, _, ct) =>
              {
+                 await CategorySeedData.SeedAsync(context, ct);
                  await ProductSeedData.SeedAsync(context, ct);
-                //  await CategorySeedData.SeedAsync(context, ct);
                  await OrderSeedData.SeedAsync(context, ct);
              });
         });

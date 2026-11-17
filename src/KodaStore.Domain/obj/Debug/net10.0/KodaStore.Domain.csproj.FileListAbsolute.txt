@@ -21,3 +21,15 @@ E:\code\koda-projects\w6-authsecurity\new\src\KodaStore.Domain\obj\Debug\net10.0
 E:\code\koda-projects\w6-authsecurity\new\src\KodaStore.Domain\obj\Debug\net10.0\refint\KodaStore.Domain.dll
 E:\code\koda-projects\w6-authsecurity\new\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.pdb
 E:\code\koda-projects\w6-authsecurity\new\src\KodaStore.Domain\obj\Debug\net10.0\ref\KodaStore.Domain.dll
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\bin\Debug\net10.0\KodaStore.Domain.deps.json
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\bin\Debug\net10.0\KodaStore.Domain.dll
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\bin\Debug\net10.0\KodaStore.Domain.pdb
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.AssemblyInfoInputs.cache
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.AssemblyInfo.cs
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.csproj.CoreCompileInputs.cache
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.sourcelink.json
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.dll
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\refint\KodaStore.Domain.dll
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\KodaStore.Domain.pdb
+E:\code\koda-projects\w6-authsecurity\koda-b1-cors2\src\KodaStore.Domain\obj\Debug\net10.0\ref\KodaStore.Domain.dll

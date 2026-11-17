@@ -3478,11 +3478,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Api\\KodaStore.Api.csproj",
+      "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Api\\KodaStore.Api.csproj",
       "projectName": "KodaStore.Api",
-      "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Api\\KodaStore.Api.csproj",
+      "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Api\\KodaStore.Api.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Api\\obj\\",
+      "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3500,11 +3500,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
-              "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Application\\KodaStore.Application.csproj"
+            "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+              "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj"
             },
-            "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
-              "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\new\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj"
+            "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
+              "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj"
             }
           }
         }

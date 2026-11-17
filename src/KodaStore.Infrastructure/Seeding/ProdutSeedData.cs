@@ -7,11 +7,11 @@ namespace KodaStore.Infrastructure.Seeding;
 public static class ProductSeedData
 {
     
-    private static IEnumerable<Product> InitialProducts()
+    private static IEnumerable<Product> InitialProducts(long defaultCategory)
     {
-        yield return new Product("P001", "Keyboard Mekanik", 35000m, 20,1);
-        yield return new Product("P002", "Mouse", 20000m, 20, 1);
-        yield return new Product("P003", "Monitor", 15000m, 20, 1);
+        yield return new Product("P001", "Keyboard Mekanik", 35000m, 20,defaultCategory);
+        yield return new Product("P002", "Mouse", 20000m, 20, defaultCategory);
+        yield return new Product("P003", "Monitor", 15000m, 20, defaultCategory);
 
 
         // *500 Data seed generate
@@ -31,7 +31,15 @@ public static class ProductSeedData
 
     public static void Seed(DbContext context)
     {
-        foreach(var product in InitialProducts())
+        var category = context.Set<Category>().FirstOrDefault();
+        if (category == null)
+        {
+            category = new Category("Elektronik"); 
+            context.Set<Category>().Add(category);
+            context.SaveChanges();
+        }
+
+        foreach(var product in InitialProducts(category.Id))
         {
             
             bool exists = context.Set<Product>().Any(p=>p.ProductCode == product.ProductCode);
@@ -48,7 +56,15 @@ public static class ProductSeedData
 
     public static async Task SeedAsync(DbContext context, CancellationToken ct)
     {
-        foreach (var product in InitialProducts())
+        var category = await context.Set<Category>().FirstOrDefaultAsync(ct);
+        if (category == null)
+        {
+            category = new Category("Elektronik"); 
+            await context.Set<Category>().AddAsync(category, ct);
+            await context.SaveChangesAsync(ct);
+        }
+
+        foreach (var product in InitialProducts(category.Id))
         {
             bool exists = await context.Set<Product>().AnyAsync(p => p.ProductCode == product.ProductCode, ct);
 
