@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Api\\KodaStore.Api.csproj": {}
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Api\\KodaStore.Api.csproj": {}
   },
   "projects": {
-    "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Api\\KodaStore.Api.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Api\\KodaStore.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Api\\KodaStore.Api.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Api\\KodaStore.Api.csproj",
         "projectName": "KodaStore.Api",
-        "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Api\\KodaStore.Api.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Api\\KodaStore.Api.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Api\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj"
               },
-              "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj"
               }
             }
           }
@@ -519,14 +519,14 @@
         }
       }
     },
-    "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj",
         "projectName": "KodaStore.Application",
-        "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -544,8 +544,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
               }
             }
           }
@@ -860,14 +860,14 @@
         }
       }
     },
-    "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
         "projectName": "KodaStore.Domain",
-        "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1197,14 +1197,14 @@
         }
       }
     },
-    "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
         "projectName": "KodaStore.Infrastructure",
-        "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Infrastructure\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1222,11 +1222,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Application\\KodaStore.Application.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Application\\KodaStore.Application.csproj"
               },
-              "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
               }
             }
           }

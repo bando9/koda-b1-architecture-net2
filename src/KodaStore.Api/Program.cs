@@ -48,6 +48,24 @@ builder.Services.AddScoped<IProductQueryService, ProductQueryService>();
 var connectionString = builder.Configuration.GetConnectionString("ecommercedb") 
     ?? throw new InvalidOperationException("ga bisa koneksi, belum konfigurasi");
 
+
+// Membaca daftar origin di env.Development
+var allowedOrigins = builder.Configuration
+    .GetSection("Cors:AllowedOrigins")
+    .Get<string[]>() ?? [];
+
+// Daftarkan Configuration CORS
+builder.Services.AddCors(option =>
+{
+    option.AddPolicy("ReactClient", policy =>
+    {
+        policy.WithOrigins(allowedOrigins)
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(connectionString)
@@ -85,6 +103,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseMiddleware<RequestTimingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

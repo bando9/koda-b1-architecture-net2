@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H710DBoLU+M=",
+  "dgSpecHash": "MUD5NrWAv8c=",
   "success": true,
-  "projectFilePath": "E:\\code\\koda-projects\\day17-efcore-datainteg\\koda-b1-efcore-dotnet8\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+  "projectFilePath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors1\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
