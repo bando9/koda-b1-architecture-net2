@@ -106,11 +106,14 @@ if (app.Environment.IsDevelopment())
         options.EnableFilter();
     });
 }
+// *apply cors ReactClient policy
+app.UseCors("ReactClient");
 
 app.UseMiddleware<RequestTimingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.UseCors("ReactClient");
+app.UseRouting();
+
 
 app.MapControllers();
 app.MapControllerRoute(
