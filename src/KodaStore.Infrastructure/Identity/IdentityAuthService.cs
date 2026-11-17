@@ -81,7 +81,7 @@ public sealed class IdentityAuthService (UserManager<AppUser> user) : IAuthServi
             return new LoginResults(false,null);
         }
 
-        var passwordValid = await _user.CheckPasswordAsync(user, request.Pasword);
+        var passwordValid = await _user.CheckPasswordAsync(user, request.Password);
 
         if (!passwordValid)
         {
