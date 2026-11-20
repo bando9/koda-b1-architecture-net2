@@ -12,6 +12,7 @@ using KodaStore.Infrastructure.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,6 +105,57 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 // *TODO: ratelimiter
+builder.Services.AddRateLimiter(option =>
+{
+    option.AddPolicy("auth-login", context=>
+    {
+        var ip = context.Connection.RemoteIpAddress?.ToString() ?? "Nihil";
+        return RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: $"login: {ip}",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit=5, // 5x
+                Window=TimeSpan.FromMinutes(3), // kena softbanned 3 menit
+                QueueLimit=0,
+                AutoReplenishment=true
+            }
+        );
+    });
+
+    option.AddPolicy("auth-register", context =>
+    {
+        var ip = context.Connection.RemoteIpAddress?.ToString() ?? "Nihil";
+
+        return RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: $"register: {ip}",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit=5,
+                Window=TimeSpan.FromMinutes(10),
+                QueueLimit=0,
+                AutoReplenishment=true
+            }
+        );  
+    });
+
+    // Refresh halaman
+    option.AddPolicy("auth-refresh", context =>
+    {
+        var ip = context.Connection.RemoteIpAddress?.ToString() ?? "Nihil";
+
+        return RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: $"refresh: {ip}",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit=10,
+                Window=TimeSpan.FromMinutes(2),
+                QueueLimit=0,
+                AutoReplenishment=true
+            }
+        );  
+    });
+    
+});
 
 
 // *Authentication
@@ -168,6 +220,7 @@ app.UseCors("ReactClient");
 app.UseAuthentication();
 app.UseAuthorization();
 // TODO: use Ratelimiter
+ 
 
 app.MapControllers();
 app.MapControllerRoute(

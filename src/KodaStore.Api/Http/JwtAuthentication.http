@@ -17,8 +17,17 @@ Accept: application/json
 Authorization: Bearer {{login.response.body.$.accessToken}}
 
 
+### REFRESH TOKEN
+POST {{baseUrl}}/api/v1/auth/refresh
+Origin: http://localhost:5173
+Cookie: koda_refresh=DF35F7D30FA04905F0EB2FDB9B8429BB7DD725EFC0D7183EA1BC3CCE82FDD207
+Accept: application/json
 
-
+### LOGOUT
+POST {{baseUrl}}/api/v1/auth/logout
+Origin: http://localhost:5173
+Cookie: koda_refresh=DF35F7D30FA04905F0EB2FDB9B8429BB7DD725EFC0D7183EA1BC3CCE82FDD207
+Accept: application/json
 
 
 

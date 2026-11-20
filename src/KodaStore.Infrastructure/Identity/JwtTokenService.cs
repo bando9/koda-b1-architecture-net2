@@ -8,14 +8,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace KodaStore.Infrastructure.Identity;
 
-public sealed class JwtTokenService : IJwtTokenService
+public sealed class JwtTokenService(IOptions<JwtOptions> options) : IJwtTokenService
 {
-    private readonly JwtOptions _options;
-
-    public JwtTokenService(IOptions<JwtOptions> options)
-    {
-        _options = options.Value;
-    }
+    private readonly JwtOptions _options = options.Value;    
 
     public IssuedAccessToken IssuedAccessToken(AuthUserResponse user)
     {
