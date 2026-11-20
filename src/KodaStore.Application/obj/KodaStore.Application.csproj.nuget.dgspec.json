@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj": {}
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Application\\KodaStore.Application.csproj": {}
   },
   "projects": {
-    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Application\\KodaStore.Application.csproj",
         "projectName": "KodaStore.Application",
-        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\KodaStore.Application.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Application\\KodaStore.Application.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Application\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
-                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
+              "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+                "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
               }
             }
           }
@@ -345,14 +345,14 @@
         }
       }
     },
-    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+    "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+        "projectUniqueName": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
         "projectName": "KodaStore.Domain",
-        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+        "projectPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors2\\src\\KodaStore.Domain\\obj\\",
+        "outputPath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
