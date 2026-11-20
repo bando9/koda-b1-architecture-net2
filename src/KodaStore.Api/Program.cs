@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using KodaStore.Infrastructure.Seeding;
 using KodaStore.Infrastructure.Repositories;
 using KodaStore.Infrastructure;
+using KodaStore.Infrastructure.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,17 +31,31 @@ builder.Services.AddProblemDetails(
     }
 );
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
-// builder.Services.AddSingleton<InMemoryProductCatalog>();
 
-// builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
-// builder.Services.AddSingleton<IProductService, ProductService>();
+var jwtOption = builder.Configuration.GetSection(JwtOptions.SectionName).Get<JwtOptions>()
+            ?? throw new InvalidOperationException("Konfigurasi JWT belum tersedia");
 
-// Repository
-// builder.Services.AddScoped<IProductRepository, SqlProductRepository>();
-// builder.Services.AddScoped<IProductRepository, EfProductRepository>();
+if(string.IsNullOrWhiteSpace(jwtOption.Issuer)) 
+        throw new InvalidOperationException("Jwt: Issuer must be present.");
+if(string.IsNullOrWhiteSpace(jwtOption.Audience)) 
+        throw new InvalidOperationException("Jwt: Audience must be present.");
+if(jwtOption.AccessTokenMinutes is < 1 or > 60) 
+        throw new InvalidOperationException("Jwt: Access Token Minutes antara 1-60 detik.");
 
-// builder.Services.AddScoped<IOrderRepository, EfOrderRepository>();
-// builder.Services.AddScoped<IProductQueryRepository, EfProductQueryRepository>();
+byte[] signingKeyBytes;
+try
+{
+    signingKeyBytes = Convert.FromBase64String(jwtOption.SigningKeyBase64);
+}
+catch (FormatException e)
+{
+    throw new InvalidOperationException("Jwt: SigningKeyBase64 tidak menggunakan Base 64 yang valid",e);
+}
+
+// HS256
+if(signingKeyBytes.Length < 32) throw new InvalidOperationException("Jwt signing key minimal 32 byte");
+ 
+
 
 // // Service
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -51,7 +69,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var connectionString = builder.Configuration.GetConnectionString("ecommercedb") 
     ?? throw new InvalidOperationException("ga bisa koneksi, belum konfigurasi");
-
 
 // Membaca daftar origin di env.Development
 var allowedOrigins = builder.Configuration
@@ -84,7 +101,41 @@ builder.Services.AddDbContext<AppDbContext>(options =>
             await OrderSeedData.SeedAsync(context,ct);
         });
 
-}); 
+});
+
+// *TODO: ratelimiter
+
+
+// *Authentication
+builder.Services
+        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(option =>
+{
+    option.MapInboundClaims = false;
+    option.IncludeErrorDetails = false;
+    option.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = jwtOption.Issuer,
+        ValidateAudience = true,
+        ValidAudience = jwtOption.Audience,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(signingKeyBytes),
+        RequireSignedTokens = true,
+        ValidAlgorithms = [
+            SecurityAlgorithms.HmacSha256
+        ],
+        ValidateLifetime = true,
+        RequireExpirationTime = true,
+        ClockSkew = TimeSpan.Zero,
+        NameClaimType = JwtRegisteredClaimNames.Sub,
+        RoleClaimType = "role"
+    };
+});
+
+
+// *Authorization
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
@@ -106,14 +157,17 @@ if (app.Environment.IsDevelopment())
         options.EnableFilter();
     });
 }
-// *apply cors ReactClient policy
-app.UseCors("ReactClient");
-
-app.UseMiddleware<RequestTimingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+// *apply cors ReactClient policy
+app.UseMiddleware<RequestTimingMiddleware>();
+app.UseCors("ReactClient");
+
+app.UseAuthentication();
+app.UseAuthorization();
+// TODO: use Ratelimiter
 
 app.MapControllers();
 app.MapControllerRoute(

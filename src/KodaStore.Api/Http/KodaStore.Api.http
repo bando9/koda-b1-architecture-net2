@@ -93,22 +93,3 @@ Content-Type: application/json
     ]
 }
 
-
-### Register
-POST {{baseUrl}}/api/v1/auth/register
-Content-Type: application/json
-
-{
-    "email": "test@gmail.com",
-    "password": "128A193dwka@", 
-    "displayName": "Bando Mega"
-}
-
-### Login
-POST {{baseUrl}}/api/v1/auth/login
-Content-Type: application/json
-
-{
-    "email": "test@gmail.com",
-    "password": "128A193dwka@"
-}

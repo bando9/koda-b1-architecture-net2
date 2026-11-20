@@ -1,0 +1,46 @@
+@baseUrl = http://localhost:5231
+
+### Login 
+# @name login
+POST {{baseUrl}}/api/v1/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "128A193dwka@"
+}
+
+### Me
+GET {{baseUrl}}/api/v1/auth/me
+Accept: application/json
+Authorization: Bearer {{login.response.body.$.accessToken}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Register
+POST {{baseUrl}}/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "128A193dwka@", 
+    "displayName": "Bando Mega"
+}
+
+### Login
+POST {{baseUrl}}/api/v1/auth/login
+Content-Type: application/json
+
