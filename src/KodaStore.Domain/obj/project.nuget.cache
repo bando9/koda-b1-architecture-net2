@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OUKUbpo5ux4=",
+  "dgSpecHash": "fUbM9BQiWZI=",
   "success": true,
-  "projectFilePath": "E:\\code\\koda-projects\\w6-authsecurity\\koda-b1-cors23\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+  "projectFilePath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

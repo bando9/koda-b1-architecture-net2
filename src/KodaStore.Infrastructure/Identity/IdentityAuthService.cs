@@ -1,14 +1,17 @@
 using KodaStore.Application.DTOs;
+using KodaStore.Application.Security;
 using KodaStore.Application.Services;
+using KodaStore.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace KodaStore.Infrastructure.Identity;
 
-public sealed class IdentityAuthService (UserManager<AppUser> user) : IAuthService
+public sealed class IdentityAuthService (UserManager<AppUser> user,AppDbContext db) : IAuthService
 {
     private readonly UserManager<AppUser> _user = user;
+    private readonly AppDbContext _db = db;
 
     public async Task<RegisterResult> RegisterAsync(RegisterRequest request, CancellationToken ct=default)
     {
@@ -30,11 +33,40 @@ public sealed class IdentityAuthService (UserManager<AppUser> user) : IAuthServi
             CreatedAtUtc = DateTimeOffset.UtcNow
         };
 
-        IdentityResult identityResult;
+        // IdentityResult identityResult;
+        await using var tx = 
+        await _db.Database.BeginTransactionAsync(ct);
 
         try
         {
-            identityResult = await _user.CreateAsync(user,request.Password);
+            var createResult = await _user.CreateAsync(user,request.Password);
+
+            if (!createResult.Succeeded)
+            {
+                await tx.RollbackAsync(ct);
+                var errors = createResult.Errors.ToArray();
+
+                var duplicate = errors.Any(error => error.Code is "DuplicateEmail" or "DuplicateUserName");
+
+                if (duplicate)
+                {
+                    return new RegisterResult(RegisterStatus.DuplicateEmail,null, ["Email sudah terdaftar"]);
+                }
+
+                return new RegisterResult(RegisterStatus.ValidationError,null, errors.Select(error => error.Description).ToArray());
+            }
+
+            var roleResult = await _user.AddToRoleAsync(user, AppRoles.Customer);
+
+            if (!roleResult.Succeeded)
+            {
+                var errors = string.Join("; ", roleResult.Errors.Select(error => error.Description));
+
+                throw new InvalidOperationException($"Gagal memberikan role CUSTOMER {errors}");
+            }
+
+            await tx.CommitAsync(ct);
+
         }
         catch (DbUpdateException e)
             when (e.InnerException is SqlException sqlError
@@ -45,27 +77,13 @@ public sealed class IdentityAuthService (UserManager<AppUser> user) : IAuthServi
             ]);
         }
 
-
-        if (!identityResult.Succeeded)
-        {
-            var error = identityResult.Errors.ToArray();
-
-            var isDuplicate = error.Any(error => error.Code is "DuplicateEmail" or "DuplicateUsername");
-
-            if (isDuplicate)
-            {
-                return new RegisterResult(RegisterStatus.DuplicateEmail, null, ["Email sudah terdaftar"]);
-            }
-            return new RegisterResult(RegisterStatus.ValidationError,
-            null,
-            error.Select(error => error.Description).ToArray());
-
-        }
+        var roles = await _user.GetRolesAsync(user);
 
         var response = new AuthUserResponse(
             user.Id,
             user.Email!,
-            user.DisplayName
+            user.DisplayName,
+            roles.ToArray()
         );
 
         return new RegisterResult(RegisterStatus.Created, response, []); 
@@ -88,8 +106,12 @@ public sealed class IdentityAuthService (UserManager<AppUser> user) : IAuthServi
             return new LoginResults(false,null);
         }
 
+        var roles = await _user.GetRolesAsync(user);
         var response = new AuthUserResponse(
-            user.Id,user.Email!,user.DisplayName
+            user.Id,
+            user.Email!,
+            user.DisplayName,
+            roles.ToArray()
         );
 
         return new LoginResults(true, response);

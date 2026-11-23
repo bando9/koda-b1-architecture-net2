@@ -17,12 +17,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "productCode": "PR05",
-    "name": "Bakso Satelit",
-    "price": 22000,
-    "stock": 231,
-    "category": "Bakso",
-    "description": "Bakso isimewa dg tetelan daging"
+    "productCode": "P005",
+    "name": "Keyboard + Mouse bundling",
+    "price": 25000,
+    "stock": 21,
+    "categoryId": 1,
+    "description": "keyboard sama mouse beli bareng lebih hemat"
 }
 
 ### UPDATE DATA
