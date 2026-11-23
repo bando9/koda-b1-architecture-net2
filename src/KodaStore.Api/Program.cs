@@ -84,7 +84,8 @@ builder.Services.AddCors(option =>
     {
         policy.WithOrigins(allowedOrigins)
         .AllowAnyHeader()
-        .AllowAnyMethod();
+        .AllowAnyMethod()
+        .AllowCredentials();
     });
 });
 
@@ -105,7 +106,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 });
 
-// *TODO: ratelimiter
 builder.Services.AddRateLimiter(option =>
 {
     option.AddPolicy("auth-login", context=>
@@ -233,7 +233,6 @@ app.UseRouting();
 // *apply cors ReactClient policy
 app.UseMiddleware<RequestTimingMiddleware>();
 app.UseCors("ReactClient");
-
 
 app.UseAuthentication();
 app.UseAuthorization();

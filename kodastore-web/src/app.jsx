@@ -1,12 +1,22 @@
+import { Navigate, Route, Routes } from "react-router";
 import LoginPage from "./pages/login-page";
-import RegisterPage from "./pages/register-page";
+import ProtectedRoute from "./auth/protected-route";
+import DashboardPage from "./pages/dashboard-page";
 
 function App() {
   return (
-    <>
-      <RegisterPage />
-      <LoginPage />
-    </> // <div className="pt-50">
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <DashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<Navigate to="/dashboard" />} replace />
+    </Routes> // <div className="pt-50">
   );
 }
 

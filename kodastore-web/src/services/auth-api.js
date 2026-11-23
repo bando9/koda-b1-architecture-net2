@@ -1,110 +1,94 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export async function loginUser({ email, password }) {
-  if (!API_BASE_URL) throw new Error("base url belum dikonfigurasi");
-
-  let response;
-  try {
-    response = await fetch(`${API_BASE_URL}/api/v1/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        email: email.trim(),
-        password,
-      }),
-    });
-  } catch {
-    throw new Error(
-      "Tidak dapat menghubungi API, periksa backend URL dan konfigurasi CORS.",
-    );
+export class ApiError extends Error {
+  constructor(status, message) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
   }
+}
 
-  const contentType = response.headers.get("content-type") ?? "";
-  const isJson = contentType.includes("json");
+async function apiRequest(
+  path,
+  { method = "GET", credentials = "omit", headers, body } = {},
+) {
+  if (!API_BASE_URL)
+    throw new ApiError(0, "VITE_API_BASE_URL belum dikonfigurasi.");
+
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    method,
+    credentials,
+    headers: { Accept: "application/json", ...headers },
+    body,
+  }).catch(() => {
+    throw new ApiError(
+      0,
+      "Tidak dapat menghubungi API. Periksa server, jaringan, dan CORS.",
+    );
+  });
+
+  const isJson = response.headers.get("content-type")?.includes("json");
   const data = isJson ? await response.json().catch(() => null) : null;
 
   if (!response.ok) {
-    if (response.status == 401) {
-      throw new Error("Email atau password salah");
-    }
+    const firstValidationErr = Object.values(data?.errors ?? {}).flat()[0];
+    const message =
+      response.status === 429
+        ? "Terlalu banyak request. Silakan coba kembali nanti."
+        : response.status >= 500
+          ? "Server sedang mengalami gangguan."
+          : (firstValidationErr ??
+            data?.detail ??
+            data?.title ??
+            "Request gagal.");
 
-    if (response.status == 400) {
-      const errors = Object.values(data?.errors ?? {}).flat();
-      throw new Error(errors[0] ?? "Data login tidak valid");
-    }
-
-    if (response.status == 429) {
-      throw new Error("Terlalu banyak percobaan login");
-    }
-
-    throw new Error(
-      response.status >= 500
-        ? "Server sedang mengalami gangguan"
-        : "login gagal. silahkan coba lagi",
-    );
-  }
-
-  if (!data?.user?.id || !data?.user?.email) {
-    throw new Error("format response login API tidak sesuai");
+    throw new ApiError(response.status, message);
   }
 
   return data;
 }
 
-export async function registerUser({ email, password, displayName }) {
-  if (!API_BASE_URL) throw new Error("base url belum dikonfigurasi");
-
-  let response;
-  try {
-    response = await fetch(`${API_BASE_URL}/api/v1/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        email: email.trim(),
-        password,
-        displayName: displayName.trim(),
-      }),
-    });
-  } catch {
-    throw new Error(
-      "Tidak dapat menghubungi API, periksa backend URL dan konfigurasi CORS.",
-    );
+const validateSession = (data) => {
+  if (
+    !data?.accessToken ||
+    !data?.expiresAtUtc ||
+    !data?.user?.id ||
+    !data?.user?.email
+  ) {
+    throw new Error("Format response authentication tidak sesuai.");
   }
-
-  const contentType = response.headers.get("content-type") ?? "";
-  const isJson = contentType.includes("json");
-  const data = isJson ? await response.json().catch(() => null) : null;
-
-  if (!response.ok) {
-    if (response.status == 409) {
-      throw new Error("email sudah terdaftar");
-    }
-
-    if (response.status == 400) {
-      const errors = Object.values(data?.errors ?? {}).flat();
-      throw new Error(errors[0] ?? "Data register tidak valid");
-    }
-
-    if (response.status == 429) {
-      throw new Error("Terlalu banyak percobaan register");
-    }
-
-    throw new Error(
-      response.status >= 500
-        ? "Server sedang mengalami gangguan"
-        : "Register gagal. silahkan coba lagi",
-    );
-  }
-
-  if (!data?.user?.id || !data?.user?.email) {
-    throw new Error("format response login API tidak sesuai");
-  }
-
   return data;
-}
+};
+
+export const loginUser = async ({ email, password }) =>
+  validateSession(
+    await apiRequest("/api/v1/auth/login", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email.trim(), password }),
+    }),
+  );
+
+let refreshInFlight = null;
+export const refreshSession = () =>
+  (refreshInFlight ??= apiRequest("/api/v1/auth/refresh", {
+    method: "POST",
+    credentials: "include",
+  })
+    .then(validateSession)
+    .finally(() => (refreshInFlight = null)));
+
+export const getCurrentUser = async (accessToken) => {
+  if (!accessToken) throw new ApiError(401, "Access Token tidak tersedia.");
+  return apiRequest("/api/v1/auth/me", {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
+};
+
+export const logoutUser = async () => {
+  await apiRequest("/api/v1/auth/logout", {
+    method: "POST",
+    credentials: "include",
+  });
+};
