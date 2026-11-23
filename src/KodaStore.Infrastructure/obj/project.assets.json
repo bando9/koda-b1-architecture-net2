@@ -4220,11 +4220,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
+      "projectUniqueName": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
       "projectName": "KodaStore.Infrastructure",
-      "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
+      "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Infrastructure\\KodaStore.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Infrastructure\\obj\\",
+      "outputPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4242,11 +4242,11 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
-              "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Application\\KodaStore.Application.csproj"
+            "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Application\\KodaStore.Application.csproj": {
+              "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Application\\KodaStore.Application.csproj"
             },
-            "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
-              "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-auth-jwt - Copy\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
+            "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Domain\\KodaStore.Domain.csproj": {
+              "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Domain\\KodaStore.Domain.csproj"
             }
           }
         }

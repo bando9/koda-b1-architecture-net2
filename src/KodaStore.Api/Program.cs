@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -195,6 +196,22 @@ app.UseExceptionHandler();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    using var scope = app.Services.CreateScope();
+
+    var roleManager = scope.ServiceProvider
+        .GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+    var userManager = scope.ServiceProvider
+        .GetRequiredService<UserManager<AppUser>>();
+
+    var bootstrapAdminEmail = app.Configuration[
+        "RoleBootstrap:AdminEmail"];
+
+    await RoleSeedData.SeedAsync(
+        roleManager,
+        userManager,
+        bootstrapAdminEmail);
+        
     app.MapOpenApi();
 
     app.MapScalarApiReference("/api");
@@ -217,9 +234,11 @@ app.UseRouting();
 app.UseMiddleware<RequestTimingMiddleware>();
 app.UseCors("ReactClient");
 
+
 app.UseAuthentication();
 app.UseAuthorization();
-// TODO: use Ratelimiter
+
+app.UseRateLimiter();
  
 
 app.MapControllers();
