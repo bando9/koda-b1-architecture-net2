@@ -1,4 +1,6 @@
 
+using KodaStore.Domain.Exceptions;
+
 namespace KodaStore.Domain.Entities;
 
 
@@ -36,7 +38,7 @@ public sealed class Order
 
     public void Confirm()
     {
-        if(Status == "Confirmed") return;
+        if (Status != "Pending") throw new OrderStateException("Hanya order Pending yang boleh dikonfirmasi");
 
         Status = "Confirmed";
     }

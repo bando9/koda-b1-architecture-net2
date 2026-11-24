@@ -1,4 +1,5 @@
-﻿using KodaStore.Application.DTOs;
+﻿using KodaStore.Application.Common;
+using KodaStore.Application.DTOs;
 
 namespace KodaStore.Application.Services;
 
@@ -10,6 +11,6 @@ public interface IOrderService
 
     Task<OrderDetailResponse> CreateAsync(CreateOrderRequest request, CancellationToken cancellationToken);
 
-    Task<OrderDetailResponse> ConfirmAsync(long id, CancellationToken cancellationToken);
+    Task<Result<OrderDetailResponse>> ConfirmAsync(long id, CancellationToken ct);
 
 }

@@ -1,6 +1,8 @@
 ﻿using System.Drawing;
+using KodaStore.Application.Common;
 using KodaStore.Application.DTOs;
 using KodaStore.Application.Repositories;
+using KodaStore.Domain.Exceptions;
 
 namespace KodaStore.Application.Services;
 
@@ -12,7 +14,24 @@ public sealed class OrderService : IOrderService
     {
         _repository = repository;
     }
-    public Task<OrderDetailResponse> ConfirmAsync(long id, CancellationToken cancellationToken) => _repository.ConfirmAsync(id,cancellationToken);
+    public async Task<Result<OrderDetailResponse>> ConfirmAsync(long id, CancellationToken ct)
+    {
+        try
+        {
+            var order = await _repository.ConfirmAsync(id, ct);
+            if (order is null)
+            {
+                return Result<OrderDetailResponse>.Failure(
+                    ResultErrorType.NotFound,
+                "Order tidak ditemukan");
+            }
+            return Result<OrderDetailResponse>.Success(order);
+        }
+        catch (OrderStateException e)
+        {
+            return Result<OrderDetailResponse>.Failure(ResultErrorType.Conflict, e.Message);
+        }
+    }
 
     public Task<OrderDetailResponse> CreateAsync(CreateOrderRequest request, CancellationToken cancellationToken)
     {

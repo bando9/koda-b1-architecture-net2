@@ -16,7 +16,7 @@ function App() {
         }
       />
       <Route path="*" element={<Navigate to="/dashboard" />} replace />
-    </Routes> // <div className="pt-50">
+    </Routes>
   );
 }
 

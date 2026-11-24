@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+      "projectUniqueName": "E:\\code\\koda-projects\\day19-architecture\\koda-b1-architecture-net2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
       "projectName": "KodaStore.Domain",
-      "projectPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
+      "projectPath": "E:\\code\\koda-projects\\day19-architecture\\koda-b1-architecture-net2\\src\\KodaStore.Domain\\KodaStore.Domain.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Domain\\obj\\",
+      "outputPath": "E:\\code\\koda-projects\\day19-architecture\\koda-b1-architecture-net2\\src\\KodaStore.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

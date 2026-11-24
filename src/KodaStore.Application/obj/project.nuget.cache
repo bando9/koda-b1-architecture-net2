@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hQ6vDZLyYLg=",
+  "dgSpecHash": "O027gM4EokQ=",
   "success": true,
-  "projectFilePath": "E:\\code\\koda-projects\\day18-w6-authsecurity\\koda-b1-rbac-security\\src\\KodaStore.Application\\KodaStore.Application.csproj",
+  "projectFilePath": "E:\\code\\koda-projects\\day19-architecture\\koda-b1-architecture-net2\\src\\KodaStore.Application\\KodaStore.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
